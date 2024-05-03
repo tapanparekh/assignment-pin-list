@@ -1,10 +1,20 @@
 .header {
     display: flex;
+    @media only screen and (max-width: 600px) {
+        margin-bottom: 1rem;
+    }
     .action-button {
         margin-left: auto;
         display: flex;
         align-items: center;
         gap: 1rem;
+        button {
+            width: 8rem;
+        }
+        @media only screen and (max-width: 600px) {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
     }
 }
 .pin-list {
