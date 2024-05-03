@@ -1,0 +1,49 @@
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Pin</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form #pinForm="ngForm" name="pin-form">
+                <div class="form-group">
+                    <label for="pin-title">Title</label>
+                    <input type="text" class="form-control" [(ngModel)]="pin.title" id="pin-title" placeholder="Title"
+                        name="pin-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="pin-image">Select Image</label>
+                    <input type="file" class="form-control-file" id="pin-image" (change)="onFileSelected($event)" name="pin-image">
+                </div>
+                <div class="form-group">
+                    <label for="pin-Collaboratory">Select Collaboratory</label>
+                    <ngx-select [items]="customerList" [multiple]="true" id="customer-region" optionValueField="id"
+                        optionTextField="title" [(ngModel)]="pin.collaborators" name="pin-Collaboratory" required></ngx-select>
+                </div>
+                <div class="form-group">
+                    <label for="customer-country">Privacy</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" [value]="false" [(ngModel)]="pin.privacy"
+                                name="pin-privacy-public" id="pin-privacy-public">
+                            <label class="form-check-label" for="pin-privacy-public">Public</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" [value]="true" [(ngModel)]="pin.privacy"
+                                name="pin-privacy-private" id="pin-privacy-private">
+                            <label class="form-check-label" for="pin-privacy-private">Private</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" #closeModel class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" (click)="setPin()" form="customer-form" class="btn btn-primary"
+                [disabled]="pinForm.invalid">Save
+                changes</button>
+        </div>
+    </div>
+</div>

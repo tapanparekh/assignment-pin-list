@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    .action-button {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+.pin-list {
+    .pin-list-table {
+        .pin-image {
+            height: 4rem;
+            width: auto;
+        }
+    }
+}

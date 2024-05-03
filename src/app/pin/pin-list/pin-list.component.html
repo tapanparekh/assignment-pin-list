@@ -1,0 +1,46 @@
+<div class="header">
+    <div class="title">
+        <h2 class="display-4">Pin List</h2>
+    </div>
+    <div class="action-button">
+        <button type="button" class="btn btn-dark" (click)="addCustomer()" data-toggle="modal"
+            data-target="#customer-model">Add Customer</button>
+        <button type="button" class="btn btn-dark" (click)="addPin()" data-toggle="modal" data-target="#pin-model">Add
+            Pin</button>
+    </div>
+</div>
+<div class="pin-list">
+    <table class="table pin-list-table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Collaboratory</th>
+                <th>Privacy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pin of pinList">
+                <td>{{pin.title}}</td>
+                <td>
+                    <img class="pin-image" src="{{'data:image/jpg;base64,' + pin.image}}" />
+                </td>
+                <td>
+                    <ul *ngFor="let collaborator of pin.collaborators">
+                        <li>{{collaborator.title}}</li>
+                    </ul>
+                </td>
+                <td>{{pin.privacy?'Private':'Public'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="customer-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <app-create-customer></app-create-customer>
+</div>
+
+<div class="modal fade" id="pin-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <app-create-pin></app-create-pin>
+</div>
