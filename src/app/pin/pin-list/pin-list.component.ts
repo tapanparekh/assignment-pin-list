@@ -16,13 +16,4 @@ export class PinListComponent {
       this.pinList = pinList;
     });
   }
-
-  addCustomer(): void {
-
-  }
-
-  addPin(): void {
-
-  }
-
 }

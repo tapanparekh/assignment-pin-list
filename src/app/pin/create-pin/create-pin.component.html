@@ -1,29 +1,31 @@
-<div class="modal-dialog" role="document">
+<div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Add Pin</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form #pinForm="ngForm" name="pin-form">
-                <div class="form-group">
-                    <label for="pin-title">Title</label>
+                <div class="mb-3">
+                    <label for="pin-title" class="form-label">Title</label>
                     <input type="text" class="form-control" [(ngModel)]="pin.title" id="pin-title" placeholder="Title"
                         name="pin-title" required>
                 </div>
-                <div class="form-group">
-                    <label for="pin-image">Select Image</label>
-                    <input type="file" class="form-control-file" id="pin-image" (change)="onFileSelected($event)" name="pin-image">
+                <div class="mb-3">
+                    <label for="pin-image" class="form-label">Select Image</label>
+                    <div>
+                        <input type="file" class="form-control-file" id="pin-image" (change)="onFileSelected($event)"
+                            name="pin-image">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="pin-Collaboratory">Select Collaboratory</label>
+                <div class="mb-3">
+                    <label for="pin-Collaboratory" class="form-label">Select Collaboratory</label>
                     <ngx-select [items]="customerList" [multiple]="true" id="customer-region" optionValueField="id"
-                        optionTextField="title" [(ngModel)]="pin.collaborators" name="pin-Collaboratory" required></ngx-select>
+                        optionTextField="title" [(ngModel)]="pin.collaborators" name="pin-Collaboratory"
+                        required></ngx-select>
                 </div>
-                <div class="form-group">
-                    <label for="customer-country">Privacy</label>
+                <div class="mb-3">
+                    <label for="customer-country" class="form-label">Privacy</label>
                     <div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" [value]="false" [(ngModel)]="pin.privacy"
@@ -40,10 +42,9 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button type="button" #closeModel class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" #closeModel data-bs-dismiss="modal">Close</button>
             <button type="button" (click)="setPin()" form="customer-form" class="btn btn-primary"
-                [disabled]="pinForm.invalid">Save
-                changes</button>
+                [disabled]="pinForm.invalid">Save changes</button>
         </div>
     </div>
 </div>

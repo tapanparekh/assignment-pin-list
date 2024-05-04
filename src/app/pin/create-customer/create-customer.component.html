@@ -1,40 +1,39 @@
-<div class="modal-dialog" role="document">
+<div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Add Customer</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form #customerForm="ngForm" name="customer-form">
-                <div class="form-group">
-                    <label for="customer-title">Title</label>
+                <div class="mb-3">
+                    <label for="customer-title" class="form-label">Title</label>
                     <input type="text" class="form-control" [(ngModel)]="customer.title" id="customer-title"
                         placeholder="Title" name="customer-title" required>
                 </div>
-                <div class="form-group">
-                    <label for="customer-email">Email</label>
+                <div class="mb-3">
+                    <label for="customer-email" class="form-label">Email</label>
                     <input type="email" class="form-control" [(ngModel)]="customer.email" id="customer-Email"
                         placeholder="Email" name="customer-email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                         required>
                 </div>
-                <div class="form-group">
-                    <label for="customer-region">Region</label>
+                <div class="mb-3">
+                    <label for="customer-region" class="form-label">Region</label>
                     <ngx-select [items]="regionList" id="customer-region" optionValueField="id" optionTextField="name"
-                        [(ngModel)]="customer.region" name="customer-region" (select)="getCountries()" required></ngx-select>
+                        [(ngModel)]="customer.region" name="customer-region" (select)="getCountries()"
+                        required></ngx-select>
                 </div>
-                <div class="form-group">
-                    <label for="customer-country">Country</label>
+                <div class="mb-3">
+                    <label for="customer-country" class="form-label">Country</label>
                     <ngx-select [items]="countriesList" [(ngModel)]="customer.country" optionValueField="id"
-                        optionTextField="name" id="customer-country" [disabled]="!customer.region" name="customer-country" required></ngx-select>
+                        optionTextField="name" id="customer-country" [disabled]="!customer.region"
+                        name="customer-country" required></ngx-select>
                 </div>
             </form>
         </div>
         <div class="modal-footer">
-            <button type="button" #closeModel class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" (click)="setCustomer()" form="customer-form" class="btn btn-primary"
-                [disabled]="customerForm.invalid">Save
+            <button type="button" #closeModel class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" (click)="setCustomer()" [disabled]="customerForm.invalid">Save
                 changes</button>
         </div>
     </div>
